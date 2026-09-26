@@ -6,7 +6,7 @@ namespace quantities{
     private:
         double value;
     public:
-        Amper(double value);
+        constexpr Amper(double value);
         constexpr double getvalue() const;
     };
 
@@ -14,7 +14,7 @@ namespace quantities{
     private:
         double value;
     public:
-        Volt(double value);
+        constexpr Volt(double value);
         constexpr double getvalue() const;
     };
 
@@ -22,7 +22,7 @@ namespace quantities{
     private:
         double value;
     public:
-        Om(double value);
+        constexpr Om(double value);
         constexpr double getvalue() const;
     };
 
@@ -30,7 +30,7 @@ namespace quantities{
     private:
         double value;
     public:
-        Joule(double value);
+        constexpr Joule(double value);
         constexpr double getvalue() const;
     };
 
@@ -38,7 +38,7 @@ namespace quantities{
     private:
         double value;
     public:
-        Watt(double value);
+        constexpr Watt(double value);
         constexpr double getvalue() const;
     };
 
@@ -46,7 +46,7 @@ namespace quantities{
     private:
         double value;
     public:
-        Sec(double value);
+        constexpr Sec(double value);
         constexpr double getvalue() const;
     };
 
@@ -106,6 +106,21 @@ namespace quantities{
 
 
     constexpr Amper operator""_mA(unsigned long long x) 
+    { return {static_cast<double>(x)}; }
+
+    constexpr Volt operator""_V(unsigned long long x) 
+    { return {static_cast<double>(x)}; }
+
+    constexpr Om operator""_Ohm(unsigned long long x) 
+    { return {static_cast<double>(x)}; }
+
+    constexpr Joule operator""_J(unsigned long long x) 
+    { return {static_cast<double>(x)}; }
+
+    constexpr Watt operator""_W(unsigned long long x) 
+    { return {static_cast<double>(x)}; }
+
+    constexpr Sec operator""_s(unsigned long long x) 
     { return {static_cast<double>(x)}; }
 
 }
