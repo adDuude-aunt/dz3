@@ -1,5 +1,5 @@
-#ifndef quantities_H
-#define quantities_H
+#ifndef QUANTITIES_H
+#define QUANTITIES_H
 
 namespace quantities{
     class Amper {
