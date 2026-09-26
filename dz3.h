@@ -3,36 +3,66 @@
 
 namespace quantities{
     class Amper {
-    public:
+    private:
         double value;
+    public:
+        constexpr double getvalue() const;
     };
 
     class Volt {
-    public:
+    private:
         double value;
+    public:
+        constexpr double getvalue() const;
     };
 
     class Om {
-    public:
+    private:
         double value;
+    public:
+        constexpr double getvalue() const;
     };
 
     class Joule {   
-    public:
+    private:
         double value;
+    public:
+        constexpr double getvalue() const;
     };
 
     class Watt {
-    public:
+    private:
         double value;
+    public:
+        constexpr double getvalue() const;
     };
 
     class Sec {
-    public:
+    private:
         double value;
+    public:
+        constexpr double getvalue() const;
     };
 
+    constexpr double Amper::getvalue() const {
+     return this->value; 
+    }
+    constexpr double Volt::getvalue() const {
+        return this->value;
+    }
 
+    constexpr double Om::getvalue() const {
+        return this->value; 
+    }
+    constexpr double Joule::getvalue() const {
+        return this->value; 
+    }
+    constexpr double Watt::getvalue() const {
+       return this->value; 
+    }
+    constexpr double Sec::getvalue() const {
+        return this->value; 
+    }
 
 
 }
