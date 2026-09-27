@@ -43,6 +43,31 @@ namespace Instruments {
         Dimension<Volt> measure_voltage() const;
     };
 
+
+    class Ampermetr : public Instrument {
+    public:
+        using Instrument::Instrument;
+        
+        Dimension<Amper> measure_amper() const;
+    };
+
+    class Multimetr : public Instrument {
+    public:
+        using Instrument::Instrument;
+        
+        Dimension<Amper> measure_amper() const;
+        Dimension<Volt> measure_voltage() const;
+        Dimension<Om> measure_om() const;
+    };
+
+
+    template <typename T>
+    Dimension<T> Instrument::measure() const {
+        double v = rand_value(diap.min, diap.max);
+        double d = (std::fabs(diap.min) + std::fabs(diap.max)) * tochn / 200.0;
+        double t = rand_value(0.0, 10.0);
+        return Dimension<T>(Sec(t), T(v), d);
+    }
 }
 
 #endif 
