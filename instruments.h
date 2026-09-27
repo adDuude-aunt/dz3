@@ -3,6 +3,7 @@
 
 #include <ostream>
 #include <string>
+#include <random>
 #include "quantities.h"
 
 
@@ -29,11 +30,12 @@ namespace Instruments {
         template <typename T>
         Dimension<T> measure() const;
     protected:
-        double sluchajnoe(double min, double max) const;
+        double rand(double min, double max) const;
 
         Range diap;
         int tochn;
         std::string name;
+        mutable std::mt19937 gen;
     };
 
     class Voltmetr : public Instrument {
@@ -63,9 +65,9 @@ namespace Instruments {
 
     template <typename T>
     Dimension<T> Instrument::measure() const {
-        double v = rand_value(diap.min, diap.max);
+        double v = rand(diap.min, diap.max);
         double d = (std::fabs(diap.min) + std::fabs(diap.max)) * tochn / 200.0;
-        double t = rand_value(0.0, 10.0);
+        double t = rand(0.0, 10.0);
         return Dimension<T>(Sec(t), T(v), d);
     }
 }
