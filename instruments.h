@@ -80,8 +80,8 @@ namespace Instruments {
 
     template <typename T>
     Dimension<T> Instrument::measure() const {
-        double v = rand(diap.getMin, diap.getMax);
-        double d = (std::fabs(diap.min) + std::fabs(diap.max)) * tochn / 200.0;
+        double v = rand(diap.getMin(), diap.getMax());
+        double d = (std::fabs(diap.getMin()) + std::fabs(diap.getMax())) * tochn / 200.0;
         double t = rand(0.0, 10.0);
         return Dimension<T>(Sec(t), T(v), d);
     }
