@@ -1,6 +1,11 @@
 #ifndef QUANTITIES_H
 #define QUANTITIES_H
 
+
+
+#include <stdexcept>
+
+
 namespace quantities{
     class Amper {
     private:
@@ -54,13 +59,21 @@ namespace quantities{
 
     constexpr Volt::Volt(double value)   : value(value) {}
 
-    constexpr Om::Om(double value)       : value(value) {}
+    constexpr Om::Om(double value)       : value(value) {
+        if (value < 0) throw std::invalid_argument("Om can`t be negative");
+    }
 
-    constexpr Joule::Joule(double value) : value(value) {}
+    constexpr Joule::Joule(double value) : value(value) {
+        if (value < 0) throw std::invalid_argument("Joule can`t be negative");
+    }
 
-    constexpr Watt::Watt(double value)   : value(value) {}
+    constexpr Watt::Watt(double value)   : value(value) {
+        if (value < 0) throw std::invalid_argument("Watt can`t be negative");
+    }
 
-    constexpr Sec::Sec(double value)     : value(value) {}
+    constexpr Sec::Sec(double value)     : value(value) {
+        if (value < 0) throw std::invalid_argument("Sec can`t be negative");
+    }
 
 
 
@@ -122,10 +135,6 @@ namespace quantities{
 
 
 // закон ома U=R*I
-    constexpr Om operator/(const Volt& u, const Amper& i) {
-    return Om(u.getvalue() / i.getvalue());
-    }
-
     constexpr Om operator/(const Volt& u, const Amper& i) {
     return Om(u.getvalue() / i.getvalue());
     }
